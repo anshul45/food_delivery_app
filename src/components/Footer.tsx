@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='flex justify-between items-center mt-16'>
-        <div className='text-[#df2020] text-sm'>Copyright - 2023, website made by Anshul. All RIghts Reserved.</div>
+        <div className='text-[#df2020] text-sm'>Copyright - 2024, website made by Anshul. All RIghts Reserved.</div>
         <div className='flex gap-4 items-center'>
           <h1 className='text-[#df2020]'>Follow:</h1>
           
