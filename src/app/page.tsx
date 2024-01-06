@@ -4,15 +4,18 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LandindPage from "@/components/LandingPage";
 import PopularFoods from "@/components/PopularFoods";
+import Slider from "@/components/Slider";
+import WhyContents from "@/components/WhyContents";
 
 export default function Home() {
     return( 
-        <div>
-    <Header/>
+        <div> 
+<Header/>
         <LandindPage/>
         <Category/>
         <Contents/>
         <PopularFoods/>
-    <Footer/>
+        <WhyContents/>
+    <Footer/>  
         </div>)
 }
