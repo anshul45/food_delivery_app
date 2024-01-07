@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Logo from "../assets/res-logo.png"
+import Link from 'next/link'
 const Footer = () => {
   return (
     <div className='bg-[#fde4e4] px-32 py-12'>
@@ -44,11 +45,16 @@ const Footer = () => {
         <div className='text-[#df2020] text-sm'>Copyright - 2024, website made by Anshul. All RIghts Reserved.</div>
         <div className='flex gap-4 items-center'>
           <h1 className='text-[#df2020]'>Follow:</h1>
+          <Link href="https://github.com/anshul45" target='_blank'>
+          <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-github-line"></i>
+          </Link>
           
-          <i className="text-white text-sm py-1 px-2 bg-[#df2020] rounded-full ri-github-line"></i>
-          
-        
-          <i className="text-white text-sm py-1 px-2 bg-[#df2020] rounded-full ri-linkedin-line"></i>
+        <Link href="https://www.linkedin.com/in/45ansh" target='_blank'>
+          <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-linkedin-line"></i>
+        </Link>
+        <Link href="https://twitter.com/anshul_025" target='_blank'>
+          <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-twitter-x-line"></i>
+        </Link>
     
         </div>
       </div>
