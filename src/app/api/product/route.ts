@@ -2,21 +2,43 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Product from "@/models/productModel";
 
-export const getAllProducts = async (request : NextRequest) => {
+export const GET = async (req : NextRequest) => {
     connectDB()
     try {
-        return NextResponse.json({data:"data"})
+        const data = await Product.find();
+        if(!data){
+          return  NextResponse.json({ message: "Sorry no data found!" },
+                { status: 404 })
+        }
+       return NextResponse.json({ data: data },
+        { status: 200 })
+
     } catch (error) {
         const errorMessage = typeof error === 'string' ? error : JSON.stringify(error);
-        throw new Error(errorMessage)
+        return  NextResponse.json({ message: errorMessage },
+            { status: 500 })
     }
 }
-export const postAllProducts = async (request : NextRequest) => {
+
+export const POST = async (req : NextRequest) => {
     connectDB()
     try {
-        return NextResponse.json({data:"data"})
+        const resData = await req.json();
+        if (Object.keys(resData).length === 0) {
+            return NextResponse.json({ message: "Please Provide data" },
+            { status: 400 })
+        }
+
+        const addProducts = new Product(resData);
+
+        await addProducts.save();
+       
+        return NextResponse.json({ message: "product added sucessfully" },
+        { status: 201 })
+
     } catch (error) {
         const errorMessage = typeof error === 'string' ? error : JSON.stringify(error);
-        throw new Error(errorMessage)
+        return  NextResponse.json({ message: error },
+        { status: 500 })
     }
 }
