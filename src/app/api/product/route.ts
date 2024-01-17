@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Product from "@/models/productModel";
 
-export const GET = async (req : NextRequest) => {
+export const GET = async () => {
     connectDB()
     try {
         const data = await Product.find();
@@ -20,7 +20,7 @@ export const GET = async (req : NextRequest) => {
     }
 }
 
-export const POST = async (req : NextRequest) => {
+export const POST = async (req : Request) => {
     connectDB()
     try {
         const resData = await req.json();
