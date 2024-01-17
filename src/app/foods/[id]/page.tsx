@@ -5,7 +5,7 @@ import Image from "next/image";
 import Review from "@/components/Review";
 import SingleFood from "@/components/SingleFood";
 
-const FoodById = () => {
+export default function FoodById() {
   const [isOpenDesc, setIsOpenDesc] = useState(true);
   const [isOpenReview, setIsOpenReview] = useState(false);
 
@@ -90,6 +90,4 @@ const FoodById = () => {
       </div>
     </div>
   );
-};
-
-export default FoodById;
+}
