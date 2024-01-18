@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
 import Banner from "../assets/hero.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const LandingPage = () => {
+  const router = useRouter();
   return (
     <div className="my-24 w-full flex items-center px-36 gap-16 justify-between">
       <div className="flex flex-col gap-10">
@@ -20,7 +23,10 @@ const LandingPage = () => {
           <div className="px-4 py-1.5  w-fit rounded-md font-semibold text-white bg-[#df2020]">
             Order Now <i className="ri-arrow-right-s-line"></i>
           </div>
-          <div className="px-4 py-1.5 border-[1px] border-[#df2020] w-fit rounded-md font-semibold text-[#df2020]">
+          <div
+            className="px-4 py-1.5 border-[1px] border-[#df2020] w-fit rounded-md font-semibold text-[#df2020] cursor-pointer"
+            onClick={() => router.push("/foods")}
+          >
             See all foods
           </div>
         </div>

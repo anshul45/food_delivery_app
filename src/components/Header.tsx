@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CartPreview from "@/components/CartPreview";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
 
@@ -12,6 +12,7 @@ const Header = () => {
     setShowCart(!showCart);
   };
   const path = usePathname();
+
   return (
     <>
       <div className="flex justify-between items-center px-36 py-2 shadow-lg shadow-[#fde4e4]">

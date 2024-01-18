@@ -42,17 +42,23 @@ const PopularFoods = () => {
       <div className="font-semibold text-4xl text-center mb-10">
         Popular Foods
       </div>
-      <div className=" bg-[#df2020]  flex gap-20 justify-center py-7 text-white rounded-md">
+      <div className=" bg-[#df2020]  flex gap-20 justify-center py-4 text-white rounded-md">
         <h1
-          className={`cursor-pointer ${
-            filterData === "All" ? "bg-white text-[#df2020]" : ""
+          className={`cursor-pointer py-2 ${
+            filterData === "All"
+              ? "bg-white text-[#df2020] px-4 py-1 rounded-lg"
+              : ""
           }`}
           onClick={() => setFilterData("All")}
         >
           All
         </h1>
         <div
-          className="flex items-center gap-2 cursor-pointer"
+          className={`flex items-center gap-2 cursor-pointer ${
+            filterData === "Burger"
+              ? "bg-white text-[#df2020] px-4 py-1 rounded-lg"
+              : ""
+          }`}
           onClick={() => setFilterData("Burger")}
         >
           <Image width={20} height={20} src={Burger} alt="burger" />
@@ -60,14 +66,22 @@ const PopularFoods = () => {
         </div>
         {/* bg-white px-4 py-1 rounded-md */}
         <div
-          className="flex items-center gap-2 cursor-pointer"
+          className={`flex items-center justify-center gap-2 cursor-pointer ${
+            filterData === "Pizza"
+              ? "bg-white text-[#df2020] px-5 py-1.5 rounded-lg"
+              : ""
+          }`}
           onClick={() => setFilterData("Pizza")}
         >
           <Image width={20} height={20} src={Pizza} alt="pizza" />
           <h1>Pizza</h1>
         </div>
         <div
-          className="flex items-center gap-2 cursor-pointer"
+          className={`flex items-center gap-2 cursor-pointer ${
+            filterData === "Bread"
+              ? "bg-white text-[#df2020] px-5 py-1.5 rounded-lg"
+              : ""
+          }`}
           onClick={() => setFilterData("Bread")}
         >
           <Image width={20} height={20} src={Bread} alt="bread" />

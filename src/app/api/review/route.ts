@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
-import Product from "@/models/productModel";
+import Review from "@/models/reviewModel";
 
 export const GET = async () => {
     connectDB()
     try {
-        const data = await Product.find();
+        const data = await Review.find();
         if(!data.length){
-          return  NextResponse.json({ message: "Sorry no data found!" },
+          return  NextResponse.json({ message: "Sorry no review data found!" },
                 { status: 404 })
         }
        return NextResponse.json({ data: data },
@@ -29,7 +29,7 @@ export const POST = async (req : Request) => {
             { status: 400 })
         }
 
-        const addProducts = new Product(resData);
+        const addProducts = new Review(resData);
 
         await addProducts.save();
        
