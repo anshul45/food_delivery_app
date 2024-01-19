@@ -29,9 +29,9 @@ export const POST = async (req : Request) => {
             { status: 400 })
         }
 
-        const addProducts = new Review(resData);
+        const addReview = new Review(resData);
 
-        await addProducts.save();
+        await addReview.save();
        
         return NextResponse.json({ message: "product added sucessfully" },
         { status: 201 })

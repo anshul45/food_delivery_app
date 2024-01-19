@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Burger from "../../../assets/product_01.jpg";
 import Image from "next/image";
 import Review from "@/components/Review";
 import SingleFood from "@/components/SingleFood";
@@ -29,11 +28,7 @@ export default function FoodById() {
   const fetchRelevent = async () => {
     const res = await fetch("http://localhost:3000/api/product");
     const foods = await res.json();
-    if (foods.data && Array.isArray(foods.data)) {
-      setReleventFood(foods.data);
-    } else {
-      console.error("No data format from the API");
-    }
+    setReleventFood(foods.data);
   };
 
   useEffect(() => {
