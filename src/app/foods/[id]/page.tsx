@@ -5,21 +5,46 @@ import Review from "@/components/Review";
 import SingleFood from "@/components/SingleFood";
 import { useParams } from "next/navigation";
 
+type FoodData = {
+  data: {
+    category: string;
+    desc: string;
+    images: string[];
+    price: number;
+    title: string;
+    __v: number;
+    _id: string;
+  };
+};
+
+type RelevantFood = {
+  data: {
+    category: string;
+    desc: string;
+    images: string[];
+    price: number;
+    title: string;
+    __v: number;
+    _id: string;
+  }[];
+};
+
 export default function FoodById() {
   const router = useParams();
   const [isOpenDesc, setIsOpenDesc] = useState(true);
   const [isOpenReview, setIsOpenReview] = useState(false);
-  const [foodData, setFoodData] = useState();
-  const [prevImage, setPrevImage] = useState<string>(foodData?.images[0]);
-  const [releventfood, setReleventFood] = useState([]);
+  const [foodData, setFoodData] = useState<FoodData["data"] | null>(null);
+  const [prevImage, setPrevImage] = useState<string | undefined>("");
+  const [releventfood, setReleventFood] = useState<RelevantFood["data"]>([]);
 
   const id = router.id;
 
   const fetchfood = async () => {
     const data = await fetch(`http://localhost:3000/api/product/${id}`);
-    const food = await data.json();
+    const food: FoodData = await data.json();
     if (food.data) {
       setFoodData(food.data);
+      setPrevImage(food.data.images[0]);
     } else {
       console.error("No data format from the API");
     }
@@ -27,7 +52,7 @@ export default function FoodById() {
 
   const fetchRelevent = async () => {
     const res = await fetch("http://localhost:3000/api/product");
-    const foods = await res.json();
+    const foods: RelevantFood = await res.json();
     setReleventFood(foods.data);
   };
 
@@ -55,7 +80,9 @@ export default function FoodById() {
             ))}
           </div>
           <div className="flex-[0.3] mt-7">
-            <Image alt="product" width={300} height={300} src={prevImage} />
+            {prevImage && (
+              <Image alt="product" width={300} height={300} src={prevImage} />
+            )}
           </div>
           <div className="flex-[0.5] flex flex-col gap-7">
             <h1 className="font-semibold text-4xl">{foodData?.title}</h1>

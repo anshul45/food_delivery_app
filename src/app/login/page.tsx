@@ -1,10 +1,24 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useSession, signIn } from "next-auth/react";
+import { useState, FormEvent } from "react";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const session = useSession();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    signIn("credentials", {
+      email,
+      password,
+    });
+  };
+
+  console.log(session);
+
   return (
     <div>
       <div className="flex flex-col gap-14  justify-center items-center">
@@ -26,7 +40,10 @@ export default function Login() {
             className="bg-inherit  w-full border-b-[1px] border-black focus:outline-none"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-[#df2020] py-2 rounded-md text-white font-semibold">
+          <button
+            className="bg-[#df2020] py-2 rounded-md text-white font-semibold"
+            onClick={handleSubmit}
+          >
             Login
           </button>
         </div>
