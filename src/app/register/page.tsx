@@ -12,7 +12,7 @@ export default function Register() {
 
   const handleSubmit = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/auth/register", {
+    const res = await fetch("http://localhost:3000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
