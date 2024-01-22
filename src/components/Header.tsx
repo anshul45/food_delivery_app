@@ -4,14 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CartPreview from "@/components/CartPreview";
-import { usePathname, useParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 const Header = () => {
+  const router = useRouter();
+  const session = useSession();
   const [showCart, setShowCart] = useState(false);
 
   const toggleCartPreview = () => {
     setShowCart(!showCart);
   };
   const path = usePathname();
+
+  const handleClick = () => {
+    if (session.status === "unauthenticated") {
+      router.push("/login");
+    } else {
+      toggleCartPreview();
+    }
+  };
 
   return (
     <>
@@ -59,7 +70,7 @@ const Header = () => {
         <div className="flex gap-7 text-lg">
           <i
             className="ri-shopping-basket-line cursor-pointer"
-            onClick={toggleCartPreview}
+            onClick={handleClick}
           ></i>
           <Link href="/login">
             <i className="ri-user-line"></i>

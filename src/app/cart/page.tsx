@@ -1,6 +1,17 @@
+"use client";
 import Image from "next/image";
 import productimage from "../../assets/product_01.jpg";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function Cart() {
+  const router = useRouter();
+  const session = useSession();
+
+  console.log(session);
+
+  if (session.status === "unauthenticated") {
+    router.push("/login");
+  }
   return (
     <div>
       <div className=" bg-green-400 w-full py-20 pl-32 font-semibold text-4xl text-white">
