@@ -20,7 +20,10 @@ const SingleFood: React.FC<SingleFoodProps> = ({ data }) => {
       <Image width={110} height={110} src={images[0]} alt="products" />
       <h1
         className="font-semibold text-lg cursor-pointer"
-        onClick={() => router.push(`/foods/${_id}`, { scroll: false })}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          router.push(`/foods/${_id}`, { scroll: false });
+        }}
       >
         {title}
       </h1>

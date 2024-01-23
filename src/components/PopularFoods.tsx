@@ -1,46 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Bread from "../assets/bread.png";
 import Pizza from "../assets/pizza.png";
 import Burger from "../assets/hamburger.png";
 import Image from "next/image";
 import SingleFood from "./SingleFood";
-import { useDispatch } from "react-redux";
-import { fetchData } from "@/lib/redux/dataSlice";
-
-interface ApiResponse {
-  data: {
-    _id: string;
-    title: string;
-    price: number;
-    images: string[];
-    category: string;
-    desc: string;
-    __v: number;
-  }[];
-}
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 type FilterData = "All" | "Burger" | "Pizza" | "Bread";
 
 const PopularFoods = () => {
-  const dispatch = useDispatch();
-  const [allFoods, setAllFoods] = useState<ApiResponse["data"]>();
   const [filterData, setFilterData] = useState<FilterData>("All");
+  const allFoods = useSelector((state: RootState) => state.data.initialData);
 
-  const fetchFoods = async () => {
-    const res = await fetch("http://localhost:3000/api/product");
-    const foods: ApiResponse = await res.json();
-    if (foods.data && Array.isArray(foods.data)) {
-      setAllFoods(foods.data);
-      dispatch(fetchData(foods.data));
-    } else {
-      console.error("No data format from the API");
-    }
-  };
-
-  useEffect(() => {
-    fetchFoods();
-  }, []);
   return (
     <div className="my-20 px-36">
       <div className="font-semibold text-4xl text-center mb-10">

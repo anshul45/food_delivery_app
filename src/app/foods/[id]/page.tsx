@@ -4,6 +4,8 @@ import Image from "next/image";
 import Review from "@/components/Review";
 import SingleFood from "@/components/SingleFood";
 import { useParams } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 type FoodData = {
   data: {
@@ -17,25 +19,15 @@ type FoodData = {
   };
 };
 
-type RelevantFood = {
-  data: {
-    category: string;
-    desc: string;
-    images: string[];
-    price: number;
-    title: string;
-    __v: number;
-    _id: string;
-  }[];
-};
-
 export default function FoodById() {
   const router = useParams();
   const [isOpenDesc, setIsOpenDesc] = useState(true);
   const [isOpenReview, setIsOpenReview] = useState(false);
   const [foodData, setFoodData] = useState<FoodData["data"] | null>(null);
   const [prevImage, setPrevImage] = useState<string | undefined>("");
-  const [releventfood, setReleventFood] = useState<RelevantFood["data"]>([]);
+  const releventfood = useSelector(
+    (state: RootState) => state.data.initialData
+  );
 
   const id = router.id;
 
@@ -50,15 +42,8 @@ export default function FoodById() {
     }
   };
 
-  const fetchRelevent = async () => {
-    const res = await fetch("http://localhost:3000/api/product");
-    const foods: RelevantFood = await res.json();
-    setReleventFood(foods.data);
-  };
-
   useEffect(() => {
     fetchfood();
-    fetchRelevent();
   }, [id]);
 
   return (

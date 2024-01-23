@@ -1,10 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SingleFood from "@/components/SingleFood";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 type FilterDataType = "Default" | "A-Z" | "Z-A" | "Low to High" | "High to Low";
 
 export default function Food() {
+  const allFoods = useSelector((state: RootState) => state.data.initialData);
   const filterData: FilterDataType[] = [
     "Default",
     "A-Z",
@@ -13,36 +16,9 @@ export default function Food() {
     "High to Low",
   ];
 
-  interface ApiResponse {
-    data: {
-      _id: string;
-      title: string;
-      price: number;
-      images: string[];
-      category: string;
-      desc: string;
-      __v: number;
-    }[];
-  }
-
   const [value, setValue] = useState<FilterDataType>("Default");
   const [search, setSearch] = useState<String>("");
   const [isvalueOpen, setIsValueOpen] = useState<boolean>(false);
-  const [allFoods, setAllFoods] = useState<ApiResponse["data"]>([]);
-
-  const fetchFoods = async () => {
-    const res = await fetch("http://localhost:3000/api/product");
-    const foods: ApiResponse = await res.json();
-    if (foods.data && Array.isArray(foods.data)) {
-      setAllFoods(foods.data);
-    } else {
-      console.error("No data format from the API");
-    }
-  };
-
-  useEffect(() => {
-    fetchFoods();
-  }, []);
 
   return (
     <div>
@@ -92,14 +68,6 @@ export default function Food() {
           {allFoods?.map((data) => (
             <SingleFood key={data._id} data={data} />
           ))}
-        </div>
-        <div className="flex justify-center items-center gap-36 mt-12">
-          <div className="text-white bg-[#df2020] px-4 rounded-md py-1.5 cursor-pointer hover:bg-[#fde4e4] hover:text-[#212245]">
-            Prev
-          </div>
-          <div className="text-white bg-[#df2020] px-4 rounded-md py-1.5 cursor-pointer hover:bg-[#fde4e4] hover:text-[#212245]">
-            Next
-          </div>
         </div>
       </div>
     </div>

@@ -2,11 +2,15 @@
 import Logo from "../assets/res-logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartPreview from "@/components/CartPreview";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/lib/redux/store";
+import { fetchData } from "@/lib/redux/dataSlice";
 const Header = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const session = useSession();
   const [showCart, setShowCart] = useState(false);
@@ -23,6 +27,20 @@ const Header = () => {
       toggleCartPreview();
     }
   };
+
+  const fetchFoods = async () => {
+    const res = await fetch("http://localhost:3000/api/product");
+    const foods = await res.json();
+    if (foods.data && Array.isArray(foods.data)) {
+      dispatch(fetchData(foods.data));
+    } else {
+      console.error("No data format from the API");
+    }
+  };
+
+  useEffect(() => {
+    fetchFoods();
+  }, []);
 
   return (
     <>
