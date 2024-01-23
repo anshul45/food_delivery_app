@@ -5,6 +5,8 @@ import Pizza from "../assets/pizza.png";
 import Burger from "../assets/hamburger.png";
 import Image from "next/image";
 import SingleFood from "./SingleFood";
+import { useDispatch } from "react-redux";
+import { fetchData } from "@/lib/redux/dataSlice";
 
 interface ApiResponse {
   data: {
@@ -21,6 +23,7 @@ interface ApiResponse {
 type FilterData = "All" | "Burger" | "Pizza" | "Bread";
 
 const PopularFoods = () => {
+  const dispatch = useDispatch();
   const [allFoods, setAllFoods] = useState<ApiResponse["data"]>();
   const [filterData, setFilterData] = useState<FilterData>("All");
 
@@ -29,6 +32,7 @@ const PopularFoods = () => {
     const foods: ApiResponse = await res.json();
     if (foods.data && Array.isArray(foods.data)) {
       setAllFoods(foods.data);
+      dispatch(fetchData(foods.data));
     } else {
       console.error("No data format from the API");
     }
