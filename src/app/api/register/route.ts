@@ -1,21 +1,20 @@
-import User from "@/models/userModel";
+import User from "@/models/UserModel";
 import { connectDB } from "@/lib/db";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 
-export const POST = async (req:Request) => {
+export const POST = async (req: Request) => {
   const { name, email, password } = await req.json();
 
-  if(!name|| !email || !password )
-  {
+  if (!name || !email || !password) {
     return new NextResponse("Please provide all data", {
-        status: 404,
-      });
+      status: 404,
+    });
   }
 
   await connectDB();
 
-  const hashedPassword =  bcrypt.hashSync(password, 5);
+  const hashedPassword = bcrypt.hashSync(password, 5);
   console.log(hashedPassword);
 
   const newUser = new User({
@@ -31,7 +30,6 @@ export const POST = async (req:Request) => {
     });
   } catch (error) {
     // const errorMessage = typeof error === 'string' ? error : JSON.stringify(error);
-    return  NextResponse.json({ message: error },
-    { status: 500 })
-    }
+    return NextResponse.json({ message: error }, { status: 500 });
   }
+};
