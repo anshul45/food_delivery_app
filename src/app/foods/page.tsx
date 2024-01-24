@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import SingleFood from "@/components/SingleFood";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 
 type FilterDataType = "Default" | "A-Z" | "Z-A" | "Low to High" | "High to Low";
 
 export default function Food() {
-  const allFoods = useSelector((state: RootState) => state.data.initialData);
+  const dispatch = useDispatch();
+  const allFoods = useSelector((state: RootState) => state.data.filteredData);
   const filterData: FilterDataType[] = [
     "Default",
     "A-Z",
@@ -35,7 +36,7 @@ export default function Food() {
               placeholder="I'm looking for....."
               className="w-full outline-none placeholder:text-black"
             />
-            <i className="ri-search-line "></i>
+            <i className="ri-search-line " onClick={() => dispatch()}></i>
           </div>
           <div>
             <div

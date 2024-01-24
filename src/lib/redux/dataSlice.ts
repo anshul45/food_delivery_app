@@ -13,10 +13,12 @@ interface FoodItem {
 
 interface DataState {
   initialData: FoodItem[];
+  filteredData: FoodItem[];
 }
 
 const initialState: DataState = {
   initialData: [],
+  filteredData: [],
 };
 
 export const dataSlice = createSlice({
@@ -25,6 +27,10 @@ export const dataSlice = createSlice({
   reducers: {
     fetchData: (state, action: PayloadAction<FoodItem[]>) => {
       state.initialData = action.payload;
+      state.filteredData = action.payload;
+    },
+    searchData: (state, action: PayloadAction<FoodItem[]>) => {
+      state.filteredData = state.initialData.includes(action.payload);
     },
   },
 });
