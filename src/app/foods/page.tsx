@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import SingleFood from "@/components/SingleFood";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
+import { AppDispatch } from "@/lib/redux/store";
+import { searchData } from "@/lib/redux/dataSlice";
 
 type FilterDataType = "Default" | "A-Z" | "Z-A" | "Low to High" | "High to Low";
 
 export default function Food() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const allFoods = useSelector((state: RootState) => state.data.filteredData);
   const filterData: FilterDataType[] = [
     "Default",
@@ -36,7 +38,10 @@ export default function Food() {
               placeholder="I'm looking for....."
               className="w-full outline-none placeholder:text-black"
             />
-            <i className="ri-search-line " onClick={() => dispatch()}></i>
+            <i
+              className="ri-search-line cursor-pointer"
+              onClick={() => dispatch(searchData(search.toLowerCase()))}
+            ></i>
           </div>
           <div>
             <div

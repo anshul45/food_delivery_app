@@ -29,13 +29,15 @@ export const dataSlice = createSlice({
       state.initialData = action.payload;
       state.filteredData = action.payload;
     },
-    searchData: (state, action: PayloadAction<FoodItem[]>) => {
-      state.filteredData = state.initialData.includes(action.payload);
+    searchData: (state, action: PayloadAction<string>) => {
+      state.filteredData = state.initialData.filter((item) =>
+        item.title.toLowerCase().includes(action.payload)
+      );
     },
   },
 });
 
-export const { fetchData } = dataSlice.actions;
+export const { fetchData, searchData } = dataSlice.actions;
 export const selectInitialData = (state: RootState) => state.data.initialData;
 
 export default dataSlice.reducer;
