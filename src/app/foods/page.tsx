@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SingleFood from "@/components/SingleFood";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 import { AppDispatch } from "@/lib/redux/store";
-import { searchData } from "@/lib/redux/dataSlice";
+import { searchData, sortData } from "@/lib/redux/dataSlice";
 
 type FilterDataType = "Default" | "A-Z" | "Z-A" | "Low to High" | "High to Low";
 
@@ -23,6 +23,16 @@ export default function Food() {
   const [search, setSearch] = useState<String>("");
   const [isvalueOpen, setIsValueOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    dispatch(searchData(search.toLowerCase()));
+  }, [search]);
+
+  const handleSelect = (data: FilterDataType) => {
+    setValue(data);
+    dispatch(sortData(data));
+    setIsValueOpen(false);
+  };
+
   return (
     <div>
       <div className=" bg-green-400 w-full py-20 pl-32 font-semibold text-4xl text-white">
@@ -38,10 +48,7 @@ export default function Food() {
               placeholder="I'm looking for....."
               className="w-full outline-none placeholder:text-black"
             />
-            <i
-              className="ri-search-line cursor-pointer"
-              onClick={() => dispatch(searchData(search.toLowerCase()))}
-            ></i>
+            <i className="ri-search-line"></i>
           </div>
           <div>
             <div
@@ -61,7 +68,7 @@ export default function Food() {
                   <h2
                     className="px-4 hover:bg-[#fde4e4] hover:text-[#212245] cursor-pointer"
                     key={idx}
-                    onClick={() => setValue(data)}
+                    onClick={() => handleSelect(data)}
                   >
                     {data}
                   </h2>

@@ -34,10 +34,42 @@ export const dataSlice = createSlice({
         item.title.toLowerCase().includes(action.payload)
       );
     },
+    sortData: (state, action: PayloadAction<string>) => {
+      const sortBy = action.payload.toLowerCase();
+
+      switch (sortBy) {
+        case "default":
+          state.filteredData = [...state.initialData];
+          break;
+        case "a-z":
+          state.filteredData = [...state.initialData].sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+          break;
+        case "z-a":
+          state.filteredData = [...state.initialData].sort((a, b) =>
+            b.title.localeCompare(a.title)
+          );
+          break;
+        case "low to high":
+          state.filteredData = [...state.initialData].sort(
+            (a, b) => a.price - b.price
+          );
+          break;
+        case "high to low":
+          state.filteredData = [...state.initialData].sort(
+            (a, b) => b.price - a.price
+          );
+          break;
+        default:
+          state.filteredData = [...state.initialData];
+          break;
+      }
+    },
   },
 });
 
-export const { fetchData, searchData } = dataSlice.actions;
+export const { fetchData, searchData, sortData } = dataSlice.actions;
 export const selectInitialData = (state: RootState) => state.data.initialData;
 
 export default dataSlice.reducer;
