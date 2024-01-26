@@ -31,10 +31,26 @@ export const cartSlice = createSlice({
         state.cartData.push({ ...action.payload, quantity: 1 });
       }
     },
+    updateCart: (
+      state,
+      action: PayloadAction<{ _id: string; qty: number }>
+    ) => {
+      const existingItem = state.cartData.find(
+        (item) => item._id === action.payload._id
+      );
+      if (existingItem) {
+        existingItem.quantity = action.payload.qty;
+        if (existingItem.quantity === 0) {
+          state.cartData = state.cartData.filter(
+            (item) => item._id !== action.payload._id
+          );
+        }
+      }
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, updateCart } = cartSlice.actions;
 export const selectInitialData = (state: RootState) => state.data.initialData;
 
 export default cartSlice.reducer;

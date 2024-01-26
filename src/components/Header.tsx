@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 import CartPreview from "@/components/CartPreview";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/lib/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/lib/redux/store";
 import { fetchData } from "@/lib/redux/dataSlice";
+
 const Header = () => {
+  const cartData = useSelector((state: RootState) => state.cart.cartData);
+  const qty = cartData.reduce((sum, item) => sum + item.quantity, 0);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const session = useSession();
@@ -21,11 +24,11 @@ const Header = () => {
   const path = usePathname();
 
   const handleClick = () => {
-    // if (session.status === "unauthenticated") {
-    //   router.push("/login");
-    // } else {
-    toggleCartPreview();
-    // }
+    if (session.status === "unauthenticated") {
+      router.push("/login");
+    } else {
+      toggleCartPreview();
+    }
   };
 
   const fetchFoods = async () => {
@@ -86,10 +89,19 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex gap-7 text-lg">
-          <i
-            className="ri-shopping-basket-line cursor-pointer"
-            onClick={handleClick}
-          ></i>
+          <div>
+            <i
+              className="ri-shopping-basket-line cursor-pointer"
+              onClick={handleClick}
+            ></i>
+            <h3
+              className={`absolute top-7 ml-4 text-xs text-white bg-[#df2020] rounded-full ${
+                qty > 9 ? "px-1 py-0.5" : "px-2 py-0.5"
+              }`}
+            >
+              {qty}
+            </h3>
+          </div>
           <Link href="/login">
             <i className="ri-user-line"></i>
           </Link>
