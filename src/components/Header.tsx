@@ -21,11 +21,11 @@ const Header = () => {
   const path = usePathname();
 
   const handleClick = () => {
-    if (session.status === "unauthenticated") {
-      router.push("/login");
-    } else {
-      toggleCartPreview();
-    }
+    // if (session.status === "unauthenticated") {
+    //   router.push("/login");
+    // } else {
+    toggleCartPreview();
+    // }
   };
 
   const fetchFoods = async () => {
