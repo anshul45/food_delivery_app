@@ -72,7 +72,13 @@ export default function FoodById() {
           </div>
           <div className="flex-[0.3] mt-7">
             {prevImage && (
-              <Image alt="product" width={300} height={300} src={prevImage} />
+              <Image
+                alt="product"
+                width={300}
+                height={300}
+                src={prevImage}
+                className="hover:transform hover:scale-110 transition-transform duration-500 ease-in-out"
+              />
             )}
           </div>
           <div className="flex-[0.5] flex flex-col gap-7">
@@ -119,7 +125,7 @@ export default function FoodById() {
           {isOpenDesc ? (
             <div className="py-8 leading-8 text-gray-600">{foodData?.desc}</div>
           ) : (
-            <Review />
+            <Review id={foodData?._id} />
           )}
 
           <div>

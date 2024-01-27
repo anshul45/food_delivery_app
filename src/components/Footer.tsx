@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="bg-[#fde4e4] px-32 py-12">
       <div className="flex justify-between gap-7">
         <div className="flex flex-col gap-5">
-          <div className="flex flex-col items-center w-fit cursor-pointer">
+          <div className="flex flex-col items-center w-fit">
             <Image alt="Logo" width={50} height={50} src={Logo} />
             <h1 className="font-bold text-xl">Tasty Treat</h1>
           </div>
@@ -57,13 +57,6 @@ const Footer = () => {
           <h1 className="text-[#df2020]">Follow:</h1>
           <Link href="https://github.com/anshul45" target="_blank">
             <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-github-line"></i>
-          </Link>
-
-          <Link href="https://www.linkedin.com/in/45ansh" target="_blank">
-            <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-linkedin-line"></i>
-          </Link>
-          <Link href="https://twitter.com/anshul_025" target="_blank">
-            <i className="text-white text-sm py-2 px-2 bg-[#df2020] rounded-full ri-twitter-x-line"></i>
           </Link>
         </div>
       </div>

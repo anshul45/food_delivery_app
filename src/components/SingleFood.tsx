@@ -31,7 +31,13 @@ const SingleFood: React.FC<SingleFoodProps> = ({ data }) => {
   };
   return (
     <div className="flex flex-col gap-6 items-center w-72 border-[1px] border-[#fde4e4] py-5 px-5">
-      <Image width={110} height={110} src={images[0]} alt="products" />
+      <Image
+        width={110}
+        height={110}
+        src={images[0]}
+        alt="products"
+        className="hover:transform hover:scale-125 transition-transform duration-500 ease-in-out"
+      />
       <h1
         className="font-semibold text-lg cursor-pointer"
         onClick={() => {

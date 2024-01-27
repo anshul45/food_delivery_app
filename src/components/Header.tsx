@@ -16,7 +16,7 @@ const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const session = useSession();
-  const [showCart, setShowCart] = useState(false);
+  const [showCart, setShowCart] = useState<boolean>(false);
 
   const toggleCartPreview = () => {
     setShowCart(!showCart);
@@ -123,7 +123,7 @@ const Header = () => {
 
       {showCart && (
         <div className="fixed right-0 top-0 z-50 bg-white w-96 h-full flex flex-col justify-between">
-          <CartPreview />
+          <CartPreview setShowCart={setShowCart} />
         </div>
       )}
     </>

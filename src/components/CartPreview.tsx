@@ -3,16 +3,23 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CartPreviewItem from "./CartPreviewItem";
 
-const CartPreview = () => {
+interface CartPreviewProps {
+  setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const CartPreview: React.FC<CartPreviewProps> = ({ setShowCart }) => {
   const cartData = useSelector((state: RootState) => state.cart.cartData);
-  const subTotal = cartData.reduce(
+  const subTotal: number = cartData.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
   return (
     <div className="overflow-y-scroll flex flex-col justify-between h-screen">
       <div className="px-3 pt-3">
-        <i className="ml-3 px-2 py-2 ri-close-line bg-[#212245] font-semibold text-white rounded-full"></i>
+        <i
+          className="ml-3 px-2 py-2 ri-close-line bg-[#212245] font-semibold text-white rounded-full cursor-pointer"
+          onClick={() => setShowCart(false)}
+        ></i>
         <div>
           {cartData.length ? (
             <>
