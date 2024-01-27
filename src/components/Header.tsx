@@ -22,6 +22,7 @@ const Header = () => {
     setShowCart(!showCart);
   };
   const path = usePathname();
+  const id = path.split("/")[2];
 
   const handleClick = () => {
     if (session.status === "unauthenticated") {
@@ -66,7 +67,11 @@ const Header = () => {
           <Link
             href="/foods"
             className={`font-semibold ${
-              path == "/foods" ? "text-[#df2020]" : "black"
+              path === "/foods"
+                ? "text-[#df2020]"
+                : path === `/foods/${id}`
+                ? "text-[#df2020]"
+                : "black"
             }`}
           >
             Foods
@@ -94,13 +99,15 @@ const Header = () => {
               className="ri-shopping-basket-line cursor-pointer"
               onClick={handleClick}
             ></i>
-            <h3
-              className={`absolute top-7 ml-4 text-xs text-white bg-[#df2020] rounded-full ${
-                qty > 9 ? "px-1 py-0.5" : "px-2 py-0.5"
-              }`}
-            >
-              {qty}
-            </h3>
+            {qty > 0 && (
+              <h3
+                className={`absolute top-7 ml-4 text-xs text-white bg-[#df2020] rounded-full ${
+                  qty > 9 ? "px-1 py-0.5" : "px-2 py-0.5"
+                }`}
+              >
+                {qty}
+              </h3>
+            )}
           </div>
           <Link href="/login">
             <i className="ri-user-line"></i>

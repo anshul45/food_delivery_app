@@ -49,8 +49,14 @@ export default function FoodById() {
   return (
     <div>
       <div>
-        <div className=" bg-green-400 w-full py-20 pl-32 font-semibold text-4xl text-white">
-          Product Name
+        <div
+          className="bg-cover bg-center  w-full py-20 pl-32 font-semibold text-4xl text-white"
+          style={{
+            backgroundImage:
+              "linear-gradient(#212245b2, #212245b2), url(https://res.cloudinary.com/anshul1/image/upload/v1706328351/foodapp/fhzfvnrmqk3dzlylrzyn.jpg)",
+          }}
+        >
+          {foodData?.title}
         </div>
         <div className="flex items-center py-9">
           <div className="flex-[0.3] flex flex-col items-center gap-7">

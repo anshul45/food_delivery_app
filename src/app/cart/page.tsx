@@ -2,6 +2,7 @@
 import CartCard from "@/components/CartCard";
 import { RootState } from "@/lib/redux/store";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 export default function Cart() {
@@ -18,7 +19,13 @@ export default function Cart() {
   }
   return (
     <div>
-      <div className=" bg-green-400 w-full py-20 pl-32 font-semibold text-4xl text-white">
+      <div
+        className="bg-cover bg-center  w-full py-20 pl-32 font-semibold text-4xl text-white"
+        style={{
+          backgroundImage:
+            "linear-gradient(#212245b2, #212245b2), url(https://res.cloudinary.com/anshul1/image/upload/v1706328351/foodapp/fhzfvnrmqk3dzlylrzyn.jpg)",
+        }}
+      >
         Your Cart
       </div>
       <div
@@ -29,11 +36,11 @@ export default function Cart() {
         <>
           {cartData.length ? (
             <div className="my-8">
-              <div className="grid grid-flow-col">
+              <div className="grid grid-flow-col grid-cols-6 font-semibold text-xl text-[#df2020]">
                 <h1 className="col-span-1">Image</h1>
-                <h1 className="col-span-3">Product Title</h1>
-                <h1 className="col-span-2">Price</h1>
-                <h1 className="col-span-1">Quantity</h1>
+                <h1 className="col-span-2">Product Title</h1>
+                <h1 className="col-span-1 pl-2">Price</h1>
+                <h1 className="col-span-2 pl-9">Quantity</h1>
                 <h1 className="col-span-1">Delete</h1>
               </div>
               <div className="mt-8">
@@ -59,12 +66,16 @@ export default function Cart() {
           </div>
 
           <div className="flex mt-8 gap-12">
-            <button className="bg-[#df2020] font-semibold text-lg text-white px-4 py-1 rounded-md">
-              Continue Shoppping
-            </button>
-            <button className="bg-[#df2020] font-semibold text-lg text-white px-4 py-1 rounded-md">
-              Proceed to checkout
-            </button>
+            <Link href="/foods">
+              <button className="bg-[#df2020] font-semibold text-lg text-white px-4 py-1 rounded-md">
+                Continue Shoppping
+              </button>
+            </Link>
+            <Link href="/checkout">
+              <button className="bg-[#df2020] font-semibold text-lg text-white px-4 py-1 rounded-md">
+                Proceed to checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ const CartCard: React.FC<CartProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-full my-9 grid items-center grid-flow-col">
+    <div className="w-full my-9 grid items-center grid-flow-col grid-cols-6">
       <Image
         className="col-span-1"
         alt="product"
@@ -44,14 +44,14 @@ const CartCard: React.FC<CartProps> = ({ data }) => {
         src={data?.image}
       />
 
-      <h1 className="col-span-3">{data?.title}</h1>
-      <h1 className="col-span-2">{data?.price}</h1>
-      <div className="flex items-center justify-between px-2 py-0.5 ml-16 w-fit rounded-lg gap-7 bg-[#fde4e4] mt-5">
+      <h1 className="col-span-2">{data?.title}</h1>
+      <h1 className="col-span-1">{data?.price}</h1>
+      <div className="col-span-2 flex items-center justify-between px-2 py-0.5  w-fit rounded-lg gap-7 bg-[#fde4e4]">
         <i
           className="ri-subtract-line text-2xl cursor-pointer"
           onClick={handleSubtract}
         ></i>
-        <h1 className="w-fit">{qty}</h1>
+        <h1>{qty}</h1>
         <i
           className="ri-add-line text-2xl cursor-pointer"
           onClick={handleAdd}

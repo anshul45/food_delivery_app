@@ -35,7 +35,13 @@ export default function Food() {
 
   return (
     <div>
-      <div className=" bg-green-400 w-full py-20 pl-32 font-semibold text-4xl text-white">
+      <div
+        className="bg-cover bg-center  w-full py-20 pl-32 font-semibold text-4xl text-white"
+        style={{
+          backgroundImage:
+            "linear-gradient(#212245b2, #212245b2), url(https://res.cloudinary.com/anshul1/image/upload/v1706328351/foodapp/fhzfvnrmqk3dzlylrzyn.jpg)",
+        }}
+      >
         All Foods
       </div>
       <div className="py-12 mx-32">
