@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AddReview: React.FC<{
   id: string | undefined;
@@ -30,10 +31,10 @@ const AddReview: React.FC<{
         }),
       });
       if (response.ok) {
-        console.log("Review submitted successfully!");
+        toast.success("Review submitted successfully!");
         onReviewSubmit();
       } else {
-        console.error("Failed to submit review. Status:", response.status);
+        toast.error("Failed to submit review.");
       }
     } catch (error) {
       console.error("An error occurred during review submission:", error);

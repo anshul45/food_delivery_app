@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 export default function Cart() {
   const cartData = useSelector((state: RootState) => state.cart.cartData);
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Cart() {
   );
 
   if (session.status === "unauthenticated") {
+    toast.warning("You need to login");
     router.push("/login");
   }
   return (

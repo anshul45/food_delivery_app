@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const router = useRouter();
@@ -13,14 +14,19 @@ export default function Login() {
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    signIn("credentials", {
-      email,
-      password,
-    });
-    router.push("/");
+    signIn(
+      "credentials",
+      {
+        email,
+        password,
+      },
+      { callbackUrl: "/" }
+    );
   };
 
-  console.log(session);
+  if (session.status !== "unauthenticated") {
+    router.push("/");
+  }
 
   return (
     <div>
@@ -57,7 +63,9 @@ export default function Login() {
           </button>
           <button
             className="bg-[#df2020] py-2 rounded-md text-white font-semibold"
-            onClick={() => signIn("google")}
+            onClick={() => {
+              signIn("google", { callbackUrl: "/" });
+            }}
           >
             Login With Google
           </button>

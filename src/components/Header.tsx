@@ -9,6 +9,8 @@ import { useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/lib/redux/store";
 import { fetchData } from "@/lib/redux/dataSlice";
+import { toast } from "react-toastify";
+import { signOut } from "next-auth/react";
 
 const Header = () => {
   const cartData = useSelector((state: RootState) => state.cart.cartData);
@@ -27,6 +29,7 @@ const Header = () => {
   const handleClick = () => {
     if (session.status === "unauthenticated") {
       router.push("/login");
+      toast.warning("You need to login");
     } else {
       toggleCartPreview();
     }
@@ -109,9 +112,19 @@ const Header = () => {
               </h3>
             )}
           </div>
-          <Link href="/login">
-            <i className="ri-user-line"></i>
-          </Link>
+          {session.status === "unauthenticated" ? (
+            <Link href="/login">
+              <i className="ri-user-line"></i>
+            </Link>
+          ) : (
+            <i
+              className="ri-logout-circle-r-line cursor-pointer"
+              onClick={() => {
+                toast.success("Successfully logout");
+                signOut();
+              }}
+            ></i>
+          )}
         </div>
       </div>
       {showCart && (

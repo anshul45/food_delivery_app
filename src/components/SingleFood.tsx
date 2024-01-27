@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/lib/redux/cartSlice";
+import { toast } from "react-toastify";
 interface SingleFoodProps {
   data: {
     images: string[];
@@ -28,6 +29,7 @@ const SingleFood: React.FC<SingleFoodProps> = ({ data }) => {
         price: data.price,
       })
     );
+    toast.success("Product added successfully!");
   };
   return (
     <div className="flex flex-col gap-6 items-center w-72 border-[1px] border-[#fde4e4] py-5 px-5">

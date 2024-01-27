@@ -2,8 +2,10 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, FormEvent } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Register() {
+  const session = useSession();
   const router = useRouter();
 
   const [name, setName] = useState<string>("");
@@ -28,6 +30,10 @@ export default function Register() {
       router.push("/login");
     }
   };
+
+  if (session.status !== "unauthenticated") {
+    router.push("/");
+  }
 
   return (
     <div>
