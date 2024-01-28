@@ -36,7 +36,9 @@ const Header = () => {
   };
 
   const fetchFoods = async () => {
-    const res = await fetch("http://localhost:3000/api/product");
+    const res = await fetch(
+      "https://food-delivery-app-anshul45.vercel.app/api/product"
+    );
     const foods = await res.json();
     if (foods.data && Array.isArray(foods.data)) {
       dispatch(fetchData(foods.data));
@@ -56,13 +58,13 @@ const Header = () => {
           <Link href="/">
             <Image alt="Logo" width={50} height={50} src={Logo} />
           </Link>
-          <h1 className="font-bold text-xl">Tasty Treat</h1>
+          <h1 className="font-bold text-xl text-[#212245]">Tasty Treat</h1>
         </div>
         <div className="flex justify-between gap-12 font-semibold">
           <Link
             href="/"
             className={`font-semibold ${
-              path == "/" ? "text-[#df2020]" : "black"
+              path == "/" ? "text-[#df2020]" : "text-[#212245]"
             }`}
           >
             Home
@@ -74,7 +76,7 @@ const Header = () => {
                 ? "text-[#df2020]"
                 : path === `/foods/${id}`
                 ? "text-[#df2020]"
-                : "black"
+                : "text-[#212245]"
             }`}
           >
             Foods
@@ -82,7 +84,7 @@ const Header = () => {
           <Link
             href="/cart"
             className={`font-semibold ${
-              path == "/cart" ? "text-[#df2020]" : "black"
+              path == "/cart" ? "text-[#df2020]" : "text-[#212245]"
             }`}
           >
             Cart
@@ -90,7 +92,7 @@ const Header = () => {
           <Link
             href="/contact"
             className={`font-semibold ${
-              path == "/contact" ? "text-[#df2020]" : "black"
+              path == "/contact" ? "text-[#df2020]" : "text-[#212245]"
             }`}
           >
             Contact

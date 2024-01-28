@@ -9,14 +9,14 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col items-center w-fit">
             <Image alt="Logo" width={50} height={50} src={Logo} />
-            <h1 className="font-bold text-xl">Tasty Treat</h1>
+            <h1 className="font-bold text-xl text-[#212245]">Tasty Treat</h1>
           </div>
           <p className="text-sm break-all">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
         <div className="flex flex-col gap-5">
-          <h1 className="font-bold text-xl">Delivery Time</h1>
+          <h1 className="font-bold text-xl text-[#212245]">Delivery Time</h1>
           <div>
             <h2 className="font-semibold">Sunday - Thrusday</h2>
             <h3>10:00am - 11:00pm</h3>
@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-          <h2 className="font-bold text-xl">Contact</h2>
+          <h2 className="font-bold text-xl text-[#212245]">Contact</h2>
           <h3>Location: India</h3>
           <div>
             <h2 className="font-semibold">Phone: 017232346718</h2>
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <h1 className="font-bold text-xl">Newsletter</h1>
+          <h1 className="font-bold text-xl text-[#212245]">Newsletter</h1>
           <h3>Subscribe our newsletter</h3>
           <div className="flex border-[1px] rounded-md border-black p-2 flex-nowrap">
             <input

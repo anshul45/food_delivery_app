@@ -44,8 +44,8 @@ const CartCard: React.FC<CartProps> = ({ data }) => {
         src={data?.image}
       />
 
-      <h1 className="col-span-2">{data?.title}</h1>
-      <h1 className="col-span-1">{data?.price}</h1>
+      <h1 className="col-span-2 text-[#212245] font-semibold">{data?.title}</h1>
+      <h1 className="col-span-1">₹ {data?.price}</h1>
       <div className="col-span-2 flex items-center justify-between px-2 py-0.5  w-fit rounded-lg gap-7 bg-[#fde4e4]">
         <i
           className="ri-subtract-line text-2xl cursor-pointer"

@@ -41,7 +41,7 @@ const SingleFood: React.FC<SingleFoodProps> = ({ data }) => {
         className="hover:transform hover:scale-125 transition-transform duration-500 ease-in-out"
       />
       <h1
-        className="font-semibold text-lg cursor-pointer"
+        className="font-semibold text-lg cursor-pointer text-[#212245]"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
           router.push(`/foods/${_id}`, { scroll: false });

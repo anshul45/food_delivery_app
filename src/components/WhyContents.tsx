@@ -10,7 +10,7 @@ const WhyContents = () => {
       <div className="flex  items-center gap-10">
         <Image src={Location} width={500} height={600} alt="delivery" />
         <div className="flex flex-col gap-7">
-          <h1 className="font-semibold text-4xl">
+          <h1 className="font-semibold text-4xl text-[#212245]">
             Why <span className="text-[#df2020]">Tasty Treat?</span>
           </h1>
           <p className="text-gray-400">
@@ -53,7 +53,7 @@ const WhyContents = () => {
       <div className="flex mt-20">
         <div className="flex flex-col gap-5">
           <h3 className="font-semibold text-2xl text-[#df2020]">Testimonial</h3>
-          <h1 className="font-semibold text-4xl">
+          <h1 className="font-semibold text-4xl text-[#212245]">
             What our <span className="text-[#df2020]">customers</span> are
             saying
           </h1>

@@ -28,7 +28,7 @@ const CartPreview: React.FC<CartPreviewProps> = ({ setShowCart }) => {
               ))}
             </>
           ) : (
-            <h1 className="mt-32 font-semibold text-lg flex items-center justify-center">
+            <h1 className="mt-32 font-semibold text-lg flex items-center justify-center text-[#212245]">
               No item added to the cart
             </h1>
           )}
@@ -38,9 +38,9 @@ const CartPreview: React.FC<CartPreviewProps> = ({ setShowCart }) => {
       <div className="flex justify-between items-center bg-[#df2020] px-4 py-7">
         <div className="flex gap-3 items-center text-white">
           <h3 className="font-semibold text-lg">Subtotal:</h3>
-          <h1 className="font-semibold text-2xl">{subTotal}</h1>
+          <h1 className="font-semibold text-2xl">₹ {subTotal}</h1>
         </div>
-        <button className=" px-2 font-semibold py-1 rounded-md bg-white ">
+        <button className=" px-2 font-semibold py-1 rounded-md bg-white text-[#212245] ">
           Checkout
         </button>
       </div>

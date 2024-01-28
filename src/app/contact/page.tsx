@@ -15,7 +15,7 @@ export default function Contact() {
       </div>
 
       <div className="my-24 mx-32 gap-7 flex flex-col  justify-center items-center">
-        <h1 className="font-semibold text-2xl">Contact us :</h1>
+        <h1 className="font-semibold text-2xl text-[#212245]">Contact us :</h1>
         <h1 className="font-semibold text-2xl text-[#df2020]">Get in touch </h1>
         <div className="flex gap-5">
           <Link href="https://github.com/anshul45" target="_blank">

@@ -21,7 +21,9 @@ const Review: React.FC<{ id: string | undefined }> = ({ id }) => {
 
   const fetchReview = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/review/${id}`);
+      const res = await fetch(
+        `https://food-delivery-app-anshul45.vercel.app/api/review/${id}`
+      );
       const resData: ReviewData = await res.json();
       console.log(resData);
       setReviewData(resData.data);
@@ -42,7 +44,7 @@ const Review: React.FC<{ id: string | undefined }> = ({ id }) => {
       {reviewData ? (
         reviewData.map((data) => <ReviewCard key={data?._id} data={data} />)
       ) : (
-        <div className="font-semibold text-2xl mt-7">
+        <div className="font-semibold text-2xl mt-7 text-[#212245]">
           <p className="mb-3">There are no reviews for this product yet.</p>
           <p>Be the first one to share your thoughts!</p>
         </div>

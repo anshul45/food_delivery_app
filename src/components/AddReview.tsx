@@ -17,19 +17,22 @@ const AddReview: React.FC<{
 
   const submitReview = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/review", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: session?.data?.user?.email,
-          productId: id,
-          stars: selectedStar + 1,
-          title: reviewTitle,
-          desc: reviewdesc,
-        }),
-      });
+      const response = await fetch(
+        "https://food-delivery-app-anshul45.vercel.app/api/review",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: session?.data?.user?.email,
+            productId: id,
+            stars: selectedStar + 1,
+            title: reviewTitle,
+            desc: reviewdesc,
+          }),
+        }
+      );
       if (response.ok) {
         toast.success("Review submitted successfully!");
         onReviewSubmit();

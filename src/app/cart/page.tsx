@@ -4,7 +4,7 @@ import { RootState } from "@/lib/redux/store";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 export default function Cart() {
   const cartData = useSelector((state: RootState) => state.cart.cartData);
@@ -52,7 +52,7 @@ export default function Cart() {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center my-9 font-semibold text-2xl">
+            <div className="flex justify-center my-9 font-semibold text-2xl text-[#212245]">
               Your cart is empty
             </div>
           )}
@@ -60,9 +60,11 @@ export default function Cart() {
         <div>
           <div className="flex gap-3 items-center ">
             <div>
-              <h3 className="font-semibold text-lg">Subtotal:</h3>
+              <h3 className="font-semibold text-lg text-[#212245]">
+                Subtotal:
+              </h3>
               <h1 className="font-semibold text-2xl text-[#df2020]">
-                {subTotal}
+                ₹ {subTotal}
               </h1>
             </div>
           </div>

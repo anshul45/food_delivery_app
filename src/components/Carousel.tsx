@@ -52,7 +52,9 @@ const Carousel = () => {
           height={50}
           className="rounded-md object-fill"
         />
-        <h1 className="font-semibold text-xl">{users[index].name}</h1>
+        <h1 className="font-semibold text-xl text-[#212245]">
+          {users[index].name}
+        </h1>
       </div>
       <div className="relative bottom-0 left-56">
         {[0, 1, 2].map((idx) => (

@@ -32,7 +32,9 @@ export default function FoodById() {
   const id = router.id;
 
   const fetchfood = async () => {
-    const data = await fetch(`http://localhost:3000/api/product/${id}`);
+    const data = await fetch(
+      `https://food-delivery-app-anshul45.vercel.app/api/product/${id}`
+    );
     const food: FoodData = await data.json();
     if (food.data) {
       setFoodData(food.data);
@@ -82,14 +84,18 @@ export default function FoodById() {
             )}
           </div>
           <div className="flex-[0.5] flex flex-col gap-7">
-            <h1 className="font-semibold text-4xl">{foodData?.title}</h1>
+            <h1 className="font-semibold text-4xl text-[#212245]">
+              {foodData?.title}
+            </h1>
             <div className="flex gap-3 items-center text-[#df2020]">
               <h3 className="font-semibold text-lg">Price:</h3>
               <h1 className="font-semibold text-2xl">{foodData?.price}</h1>
             </div>
             <div className="flex gap-3 items-center">
-              <h3 className="font-semibold text-lg">Category:</h3>
-              <h1 className="font-semibold text-lg bg-[#fde4e4] px-3 py-1 rounded-md">
+              <h3 className="font-semibold text-lg text-[#212245]">
+                Category:
+              </h3>
+              <h1 className="font-semibold text-lg bg-[#fde4e4] px-3 py-1 rounded-md text-[#212245]">
                 {foodData?.category}
               </h1>
             </div>
@@ -101,7 +107,9 @@ export default function FoodById() {
         <div className=" my-20 mx-32 ">
           <div className="  py-4 flex gap-12 font-semibold text-lg border-b-[1px] border-[#fde4e4]">
             <div
-              className={`cursor-pointer ${isOpenDesc ? "text-[#df2020]" : ""}`}
+              className={`cursor-pointer ${
+                isOpenDesc ? "text-[#df2020]" : "text-[#212245]"
+              }`}
               onClick={() => {
                 setIsOpenReview(!isOpenReview);
                 setIsOpenDesc(!isOpenDesc);
@@ -111,7 +119,7 @@ export default function FoodById() {
             </div>
             <div
               className={`cursor-pointer ${
-                isOpenReview ? "text-[#df2020]" : ""
+                isOpenReview ? "text-[#df2020]" : "text-[#212245]"
               }`}
               onClick={() => {
                 setIsOpenReview(!isOpenReview);
@@ -129,7 +137,9 @@ export default function FoodById() {
           )}
 
           <div>
-            <h1 className="font-semibold text-2xl">You May Also Like</h1>
+            <h1 className="font-semibold text-2xl text-[#212245]">
+              You May Also Like
+            </h1>
             <div className="mt-16 flex flex-wrap justify-between gap-14">
               {releventfood
                 ?.filter((food) => food.category === foodData?.category, 3)

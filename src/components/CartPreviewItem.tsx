@@ -37,7 +37,7 @@ const CartPreviewItem: React.FC<CartProps> = ({ data }) => {
         <div className="flex gap-4">
           <Image alt="product_Image" width={37} height={20} src={data?.image} />
           <div>
-            <h1>{data?.title}</h1>
+            <h1 className="text-[#212245]">{data?.title}</h1>
             <div className="flex justify-between">
               <h3>{data?.quantity}x</h3>
               <h3>{data?.price}</h3>

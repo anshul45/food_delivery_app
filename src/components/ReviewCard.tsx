@@ -18,14 +18,14 @@ const ReviewCard: React.FC<Data> = ({ data }) => {
 
   return (
     <div className="flex flex-col pt-9">
-      <h1 className="font-semibold text-sm">{data?.username}</h1>
+      <h1 className="font-semibold text-sm text-[#212245]">{data?.username}</h1>
       <div className="flex gap-5 text-sm">
         <div>
           {starData.map((data) => (
             <i className="ri-star-fill text-[#df2020]" key={data}></i>
           ))}
         </div>
-        <div className="font-semibold">{data?.title}</div>
+        <div className="font-semibold text-gray-500">{data?.title}</div>
       </div>
       <p className="text-sm">{data?.desc}</p>
     </div>
