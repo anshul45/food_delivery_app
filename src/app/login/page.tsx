@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
