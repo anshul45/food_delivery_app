@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -23,9 +23,12 @@ export default function Login() {
     );
   };
 
-  if (session.status !== "unauthenticated") {
-    router.push("/");
-  }
+  useEffect(() => {
+
+    if (session.status !== "unauthenticated") {
+      router.push("/");
+    }
+  }, [session.status])
 
   return (
     <div>
