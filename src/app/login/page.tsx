@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useState, FormEvent } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
