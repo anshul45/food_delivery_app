@@ -33,7 +33,7 @@ export default function FoodById() {
 
   const fetchfood = async () => {
     const data = await fetch(
-      `https://food-delivery-app-anshul45.vercel.app/api/product/${id}`
+      `https://food-delivery-app-orcin-two.vercel.app/api/product/${id}`
     );
     const food: FoodData = await data.json();
     if (food.data) {
