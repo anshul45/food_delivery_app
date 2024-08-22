@@ -22,7 +22,7 @@ const Review: React.FC<{ id: string | undefined }> = ({ id }) => {
   const fetchReview = async () => {
     try {
       const res = await fetch(
-        `https://food-delivery-app-anshul45.vercel.app/api/review/${id}`
+        `https://food-delivery-app-orcin-two.vercel.app/api/review/${id}`
       );
       const resData: ReviewData = await res.json();
       console.log(resData);

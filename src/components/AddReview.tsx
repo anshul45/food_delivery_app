@@ -18,7 +18,7 @@ const AddReview: React.FC<{
   const submitReview = async () => {
     try {
       const response = await fetch(
-        "https://food-delivery-app-anshul45.vercel.app/api/review",
+        "https://food-delivery-app-orcin-two.vercel.app/api/review",
         {
           method: "POST",
           headers: {

@@ -37,7 +37,7 @@ const Header = () => {
 
   const fetchFoods = async () => {
     const res = await fetch(
-      "https://food-delivery-app-anshul45.vercel.app/api/product"
+      "https://food-delivery-app-orcin-two.vercel.app/api/product"
     );
     const foods = await res.json();
     if (foods.data && Array.isArray(foods.data)) {
